@@ -20,6 +20,14 @@ const Button = ({
         console.error("Projects section not found");
       }
     }
+    if (route === "cv") {
+      const link = document.createElement("a");
+      link.href = "./cv.pdf";
+      link.download = "cv.pdf"; 
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   };
 
   return (
