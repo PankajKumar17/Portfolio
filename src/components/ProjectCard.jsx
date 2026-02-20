@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
 
-const ProjectCard = ({ src="", alt="", label="", navigateTo = "/" }) => {
+const ProjectCard = ({ src="", alt="", label="", onOpen }) => {
+  const { isDark } = useTheme();
   const blobRef = useRef(null);
   const containerRef = useRef(null);
-//   const navigate = useNavigate();
 
   const handleMouseMove = (e) => {
     const blob = blobRef.current;
@@ -45,7 +45,7 @@ const ProjectCard = ({ src="", alt="", label="", navigateTo = "/" }) => {
   };
 
   const handleClick = () => {
-    // navigate(navigateTo);
+    if (onOpen) onOpen();
   };
 
   return (
@@ -58,13 +58,16 @@ const ProjectCard = ({ src="", alt="", label="", navigateTo = "/" }) => {
       {/* White Glow Blob */}
       <div
         ref={blobRef}
-        className="absolute top-[30%] left-1/2 w-[120px] h-[30%] -translate-x-1/2 rounded-full bg-purple-400 opacity-0 blur-[60px] transition-opacity duration-300 pointer-events-none z-20"
+        className={`absolute top-[30%] left-1/2 w-[120px] h-[30%] -translate-x-1/2 rounded-full ${isDark ? 'bg-purple-400' : 'bg-orange-400'} opacity-0 blur-[60px] transition-opacity duration-300 pointer-events-none z-20`}
       ></div>
       <img
         src={src}
         alt={alt}
         onClick={handleClick}
         className="w-full object-cover h-full z-10 transition-transform duration-300 hover:scale-105"
+        loading="lazy"
+        decoding="async"
+        style={{ contentVisibility: 'auto' }}
       />
 
       {/* Label

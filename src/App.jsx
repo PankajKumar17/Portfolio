@@ -4,9 +4,6 @@ import About from './pages/About';
 import Skills from './pages/Skills';
 import Project from './pages/Project';
 import Contact from './pages/Contact';
-//.env
-
-
 
 const App = () => {
   return (

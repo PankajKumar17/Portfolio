@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 const ExperienceCard = () => {
+  const { isDark } = useTheme();
   const handleDownload = (e) => {
     e.preventDefault();
     const link = document.createElement("a");
@@ -12,20 +14,20 @@ const ExperienceCard = () => {
   };
 
   return (
-    <div className="group relative bg-slate-800/50 rounded-xl px-[2px] py-[2px] overflow-clip">
+    <div className={`group relative ${isDark ? 'bg-slate-800/50' : 'bg-white'} rounded-xl px-[2px] py-[2px] overflow-clip transition-colors duration-300`}>
       {/* Glow effect container */}
-      <div className="absolute -inset-0.5 bg-purple-600 rounded-xl opacity-0 blur group-hover:opacity-75 transition duration-500 animate-spin-slow"></div>
+      <div className={`absolute -inset-0.5 ${isDark ? 'bg-purple-600' : 'bg-orange-600'} rounded-xl opacity-0 blur group-hover:opacity-75 transition duration-500 animate-spin-slow`}></div>
 
       {/* Main card content */}
-      <div className="relative rounded-xl bg-slate-800 px-8 py-8 text-center">
-        <div className="text-8xl font-bold text-white mb-4">2</div>
-        <div className="text-xl text-gray-300 mb-8">
+      <div className={`relative rounded-xl ${isDark ? 'bg-slate-800' : 'bg-white border-2 border-orange-200'} px-8 py-8 text-center transition-colors duration-300`}>
+        <div className={`text-8xl font-bold ${isDark ? 'text-white' : 'text-gray-900'} mb-4`}>2</div>
+        <div className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-700'} mb-8`}>
           <div>Months</div>
           <div>Experience</div>
           <div>Working</div>
         </div>
         <button
-          className="bg-purple-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-purple-500 transition-colors"
+          className={`${isDark ? 'bg-purple-500 hover:bg-purple-600' : 'bg-orange-500 hover:bg-orange-600'} text-white px-8 py-3 rounded-lg font-semibold transition-colors`}
           onClick={
               handleDownload
           }

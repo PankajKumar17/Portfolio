@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import emailjs from "emailjs-com";
+import { useTheme } from "../context/ThemeContext";
 
 const Contact = () => {
+  const { isDark } = useTheme();
   const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
   const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
   const userId = import.meta.env.VITE_EMAILJS_USER_ID;
@@ -65,7 +67,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="bg-[#00000f] text-white pt-8 pb-6 px-28">
+    <section className={`${isDark ? 'bg-[#00000f] text-white' : 'bg-[#efeae3] text-gray-900'} pt-8 pb-6 px-28 transition-colors duration-300`}>
       <div className="max-w-[100vw] mx-auto">
         <h2 className="text-5xl font-bold text-center mb-12">
           Get in Touch - Let's Connect
@@ -75,7 +77,7 @@ const Contact = () => {
           <div className="flex-1 w-[40vw]">
             <div className="space-y-6">
               <div>
-                <label className="block text-gray-300 text-sm mb-2">
+                <label className={`block ${isDark ? 'text-gray-300' : 'text-gray-600'} text-sm mb-2`}>
                   Your name
                 </label>
                 <input
@@ -86,12 +88,12 @@ const Contact = () => {
                   placeholder="What's your good name?"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-gray-500"
+                  className={`w-full ${isDark ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-gray-500' : 'bg-white border-orange-200 text-gray-900 placeholder-gray-400 focus:border-orange-400'} border rounded-lg px-4 py-4 focus:outline-none transition-colors duration-300`}
                 />
               </div>
 
               <div>
-                <label className="block text-gray-300 text-sm mb-2">
+                <label className={`block ${isDark ? 'text-gray-300' : 'text-gray-600'} text-sm mb-2`}>
                   Your Email
                 </label>
                 <input
@@ -102,12 +104,12 @@ const Contact = () => {
                   placeholder="What's your email address?"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-gray-500"
+                  className={`w-full ${isDark ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-gray-500' : 'bg-white border-orange-200 text-gray-900 placeholder-gray-400 focus:border-orange-400'} border rounded-lg px-4 py-4 focus:outline-none transition-colors duration-300`}
                 />
               </div>
 
               <div>
-                <label className="block text-gray-300 text-sm mb-2">
+                <label className={`block ${isDark ? 'text-gray-300' : 'text-gray-600'} text-sm mb-2`}>
                   Your Message
                 </label>
                 <textarea
@@ -117,14 +119,14 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows="6"
-                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-gray-500 resize-none"
+                  className={`w-full ${isDark ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-gray-500' : 'bg-white border-orange-200 text-gray-900 placeholder-gray-400 focus:border-orange-400'} border rounded-lg px-4 py-4 focus:outline-none resize-none transition-colors duration-300`}
                 ></textarea>
               </div>
               <button
                 type="submit"
                 onClick={handleSubmit}
                 disabled={isLoading}
-                className={`w-full bg-[#8a47c5] text-black font-semibold py-4 rounded-full transition-all duration-300 cursor-pointer shadow-md flex items-center justify-center gap-3 group hover:bg-gradient-to-r hover:from-[#9650d3] hover:to-[#6d28d9] hover:text-white hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-lg ${
+                className={`w-full ${isDark ? 'bg-[#8a47c5] hover:from-[#9650d3] hover:to-[#c17aff]' : 'bg-[#ff6b35] hover:from-[#ff8c42] hover:to-[#ff4500]'} text-white font-semibold py-4 rounded-full transition-all duration-300 cursor-pointer shadow-md flex items-center justify-center gap-3 group hover:bg-gradient-to-r hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-lg ${
                   isLoading ? "opacity-60 cursor-not-allowed" : ""
                 }`}
               >
@@ -180,7 +182,7 @@ const Contact = () => {
           </div>
           <div className="right w-[30vw] h-[60vh] flex items-center justify-center ml-[10vw]">
             <iframe
-              src="https://lottie.host/embed/ca27e9a3-64b7-4f24-80b4-e2128c6395f6/N6QEd1t2GS.lottie"
+              src={isDark ? 'https://lottie.host/embed/ca27e9a3-64b7-4f24-80b4-e2128c6395f6/N6QEd1t2GS.lottie':'https://lottie.host/embed/c12ce218-dd38-4a28-8656-96febf2bfb00/Xgw2FG0dPN.lottie'}
               width="100%"
               height="100%"
               style={{
@@ -192,15 +194,15 @@ const Contact = () => {
           </div>
         </div>
         <div className="mt-8 text-center">
-          <div className="line bg-slate-400 w-full h-[2px] rounded-2xl my-4"></div>
-          <divp className="text-gray-400 text-sm flex items-center justify-between">
+          <div className={`line ${isDark ? 'bg-slate-400' : 'bg-orange-300'} w-full h-[2px] rounded-2xl my-4 transition-colors duration-300`}></div>
+          <divp className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm flex items-center justify-between`}>
             <p>📞 +91 7027009709</p>
             <div className="icons h-[24px] p-0 m-0 flex gap-4 items-center justify-center">
               <a
                 href="https://www.linkedin.com/in/pankaj261/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-300 h-[24px]"
+                className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-orange-600'} transition-colors duration-300 h-[24px]`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -218,7 +220,7 @@ const Contact = () => {
                 href="https://github.com/PankajKumar17"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-300 h-[24px]"
+                className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-orange-600'} transition-colors duration-300 h-[24px]`}
               >
                 <svg
                   height="24"
@@ -236,7 +238,7 @@ const Contact = () => {
                 href="https://codeforces.com/profile/pankaj_kumar_"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-300 h-[24px]"
+                className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-orange-600'} transition-colors duration-300 h-[24px]`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -264,7 +266,7 @@ const Contact = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
+        theme={isDark ? "dark" : "light"}
       />
     </section>
   );

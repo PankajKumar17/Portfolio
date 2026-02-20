@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 const SkillCard = ({ src, alt, label }) => {
+  const { isDark } = useTheme();
   const blobRef = useRef(null);
   const containerRef = useRef(null);
 
@@ -41,15 +43,15 @@ const SkillCard = ({ src, alt, label }) => {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-40 h-40 bg-slate-800/50 rounded-lg flex flex-col gap-2 items-center justify-center border border-slate-700 overflow-hidden"
+      className={`relative w-40 h-40 ${isDark ? 'bg-slate-800/50 border-slate-700' : 'bg-white border-orange-200'} rounded-lg flex flex-col gap-2 items-center justify-center border overflow-hidden transition-colors duration-300`}
     >
       <div
         ref={blobRef}
-        className="absolute top-0 left-1/2 w-[250px] h-4/5 -translate-x-1/2 rounded-full bg-purple-500 opacity-0 blur-[40px] transition-opacity duration-300 pointer-events-none z-0"
+        className={`absolute top-0 left-1/2 w-[250px] h-4/5 -translate-x-1/2 rounded-full ${isDark ? 'bg-purple-500' : 'bg-orange-500'} opacity-0 blur-[40px] transition-opacity duration-300 pointer-events-none z-0`}
       ></div>
 
       <img src={src} alt={alt} className="mx-auto w-16 h-16 z-10" />
-      <p className="text-lg text-slate-300 z-10">{label}</p>
+      <p className={`text-lg ${isDark ? 'text-slate-300' : 'text-gray-700'} z-10`}>{label}</p>
     </div>
   );
 };

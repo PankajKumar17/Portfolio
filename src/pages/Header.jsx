@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";//bg-gradient-to-r from-[#0b0f2f] to-[#1d2b4f]
+import Navbar from "../components/Navbar";
 import Bubbles from "../components/Bubble";
-// import "./Home3d";
 import Home3d from "../components/Home3d";
+import Lanyard from '../components/Lanyard';
 import Button from "../components/Button";
+import { useTheme } from "../context/ThemeContext";
 
 const Header = () => {
+  const { isDark } = useTheme();
   const roles = [
     "Flutter App Developer",
     "Frontend Developer",
@@ -42,12 +44,46 @@ const Header = () => {
   }, [displayedText, isDeleting, currentRole, roles]);
 
   return (
-    <header className="bg-[#00000f] h-[100vh] text-white relative overflow-hidden flex">
+    <header className={`${isDark ? 'bg-[#00000f] text-white' : 'bg-[#efeae3] text-gray-900'} h-[100vh] relative overflow-hidden flex transition-colors duration-300`}>
       <Navbar />
 
       {/* Background Bubble */}
       <div className="absolute inset-0 z-[10]">
         <Bubbles top="12vh" left="12vw" />
+      </div>
+
+      {/* Fixed Gradient Shadow for ID Card */}
+      <div className="absolute right-1/4 top-1/2 -translate-y-1/2 w-80 h-[500px] z-[5] pointer-events-none">
+        <div 
+          className="w-full h-full blur-3xl rounded-full opacity-60"
+          style={{
+            background: `radial-gradient(ellipse at center,${isDark ? 'rgba(138, 71, 197, 0.6)' : 'rgba(254, 51, 10, 0.6)'} 0%, ${isDark ? 'rgba(138, 71, 197, 0.4)' : 'rgba(254, 51, 10, 0.4)'} 30%, rgba(255, 152, 49, 0.2) 50%, transparent 70%)`
+          }}
+        ></div>
+      </div>
+      <div className="absolute right-1/4 top-4/5 -translate-y-1/2 w-80 h-[500px] z-[5] pointer-events-none">
+        <div 
+          className="w-full h-full blur-3xl rounded-full opacity-60"
+          style={{
+            background: `radial-gradient(ellipse at center,${isDark ? 'rgba(138, 71, 197, 0.6)' : 'rgba(254, 51, 10, 0.6)'} 0%, ${isDark ? 'rgba(138, 71, 197, 0.4)' : 'rgba(254, 51, 10, 0.4)'} 30%, rgba(255, 152, 49, 0.2) 50%, transparent 70%)`
+          }}
+        ></div>
+      </div>
+      <div className="absolute right-1/10 top-1/2 -translate-y-1/2 w-80 h-[500px] z-[5] pointer-events-none">
+        <div 
+          className="w-full h-full blur-3xl rounded-full opacity-60"
+          style={{
+            background: `radial-gradient(ellipse at center,${isDark ? 'rgba(138, 71, 197, 0.6)' : 'rgba(254, 51, 10, 0.6)'} 0%, ${isDark ? 'rgba(138, 71, 197, 0.4)' : 'rgba(254, 51, 10, 0.4)'} 30%, rgba(255, 152, 49, 0.2) 50%, transparent 70%)`
+          }}
+        ></div>
+      </div>
+      <div className="absolute right-1/10 top-4/5 -translate-y-1/2 w-80 h-[500px] z-[5] pointer-events-none">
+        <div 
+          className="w-full h-full blur-3xl rounded-full opacity-60"
+          style={{
+            background: `radial-gradient(ellipse at center,${isDark ? 'rgba(138, 71, 197, 0.6)' : 'rgba(254, 51, 10, 0.6)'} 0%, ${isDark ? 'rgba(138, 71, 197, 0.4)' : 'rgba(254, 51, 10, 0.4)'} 30%, rgba(255, 152, 49, 0.2) 50%, transparent 70%)`
+          }}
+        ></div>
       </div>
 
       {/* Left Section */}
@@ -61,13 +97,13 @@ const Header = () => {
           </h1>
           <h2 className="text-2xl font-semibold mb-6 self-start text-start">
             I am a{" "}
-            <span className="text-[#8a47c5] ml-1.5">
+            <span className={`${isDark ? 'text-[#8a47c5]' : 'text-[#fe330a]'} ml-1.5`}>
               {displayedText}
               <span className="blinking-cursor">|</span>
             </span>
           </h2>
 
-          <p className="text-xl mb-8 text-gray-300">
+          <p className={`text-xl mb-8 ${isDark ? 'text-gray-200' : 'text-gray-600'}`}>
             A passionate developer creating beautiful and functional web
             applications. Skilled in Flutter development, backend systems, and
             coding innovative solutions.
@@ -77,11 +113,15 @@ const Header = () => {
       </div>
 
       {/* Right Section */}
-      <div className="right z-10 w-1/2 flex items-center justify-center">
-        <Home3d />
+      <div className="right z-50 absolute w-[150vw] -right-1/2 flex justify-between overflow-visible">
+        <Lanyard className="z-59 overflow-visible" position={[0, 0, 15]} gravity={[0, -40, 0]} />
       </div>
     </header>
   );
 };
 
 export default Header;
+
+
+
+//1768*2654

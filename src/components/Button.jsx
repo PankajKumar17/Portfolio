@@ -1,15 +1,24 @@
 import React, { useState } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 const Button = ({
   text = "View My Work",
-  bgColor = "#8a47c5",
-  hoverColor = "#ffffff",
+  bgColor,
+  hoverColor,
   textColor = "#000000",
   hoverTextColor = "#000000",
   borderColor = "transparent",
   route = "projects",
 }) => {
+  const { isDark } = useTheme();
   const [isHovered, setIsHovered] = useState(false);
+  
+  // Set defaults based on theme if not provided
+  const defaultBgColor = isDark ? "#8a47c5" : "#fe330a";
+  const defaultHoverColor = isDark ? "#c17aff" : "#ff9831";
+  const finalBgColor = bgColor || defaultBgColor;
+  const finalHoverColor = hoverColor || defaultHoverColor;
+  
   const onclick = (e) => {
     e.preventDefault();
     if (route === "projects") {
@@ -33,7 +42,7 @@ const Button = ({
   return (
     <button
       className="relative overflow-hidden rounded-full border-2 group font-semibold text-lg cursor-pointer"
-      style={{ backgroundColor: bgColor, borderColor: borderColor }}
+      style={{ backgroundColor: finalBgColor, borderColor: borderColor }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onclick}
@@ -48,7 +57,7 @@ const Button = ({
       </span>
       <div
         className="absolute left-0 top-full h-full w-full rounded-full transition-all duration-500 ease-in-out group-hover:top-0 group-hover:rounded-none z-0"
-        style={{ backgroundColor: hoverColor }}
+        style={{ backgroundColor: finalHoverColor }}
       />
     </button>
   );

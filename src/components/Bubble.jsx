@@ -1,6 +1,10 @@
 import React from 'react';
+import { useTheme } from '../context/ThemeContext';
 
-const Bubbles = ({ top = '25%', left = '0%', width = '30vw', height = '50vh', backgroundColor = 'rgba(30,6,66,1)' }) => {
+const Bubbles = ({ top = '25%', left = '0%', width = '30vw', height = '50vh' }) => {
+  const { isDark } = useTheme();
+  const backgroundColor = isDark ? 'rgba(30,6,66,1)' : 'rgba(254, 51, 10, 0.34)';
+  
   return (
     <div className="relative z-0 w-full h-screen overflow-hidden">
       <style>{`

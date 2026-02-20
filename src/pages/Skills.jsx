@@ -1,23 +1,22 @@
 import React from "react";
 import SkillCard from "../components/SkillCard";
 import ExperienceCard from "../components/ExperienceCard";
+import { useTheme } from "../context/ThemeContext";
 
 const Skills = () => {
+  const { isDark } = useTheme();
+
   return (
-    <div className="min-h-screen bg-[#00000f] text-white p-8">
+    <div className={`min-h-screen ${isDark ? 'bg-[#00000f] text-white' : 'bg-[#efeae3] text-gray-900'} p-8 transition-colors duration-300`}>
       {/* Main Skills Section */}
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-6xl font-bold text-center text-white mb-16">
+        <h1 className={`text-6xl font-bold text-center ${isDark ? 'text-white' : 'text-gray-900'} mb-16`}>
           MY SKILLS
         </h1>
 
         <div className="flex items-center justify-center gap-12">
           <div className="grid grid-cols-4 gap-6">
             <SkillCard src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg" label="Flutter"/>
-            {/* <SkillCard src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" />
-            <SkillCard src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" />
-            <SkillCard src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" /> */}
-            {/* <SkillCard src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" /> */}
             <SkillCard src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" label="React"/>
             <SkillCard src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" label="Tailwind CSS"/>
             <SkillCard src="https://images-cdn.openxcell.com/wp-content/uploads/2024/07/24154156/dango-inner-2.webp" label="Next.js"/>
@@ -25,7 +24,6 @@ const Skills = () => {
             <SkillCard src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" label="Node.js"/>
             <SkillCard src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" label="MongoDB"/>
             <SkillCard src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" label="MySQL"/>
-            {/* <SkillCard src=""/> */}
           </div>
 
           
@@ -33,12 +31,12 @@ const Skills = () => {
         </div>
 
         <div className="mt-16">
-          <h2 className="text-3xl font-bold text-center text-purple-500 mb-8">
+          <h2 className={`text-3xl font-bold text-center ${isDark ? 'text-purple-500' : 'text-orange-600'} mb-8`}>
             ADDITIONAL SKILLS
           </h2>
-          <div className="bg-slate-900 rounded-lg p-8 border border-slate-700 relative">
-            <div className="absolute top-0 left-8 h-full w-48 bg-gradient-to-r from-slate-900 to-transparent z-10"></div>
-            <div className="absolute top-0 right-8 h-full w-48 bg-gradient-to-l from-slate-900 to-transparent z-10"></div>
+          <div className={`${isDark ? 'bg-slate-900 border-slate-700' : 'bg-white border-orange-200'} rounded-lg p-8 border relative transition-colors duration-300`}>
+            <div className={`absolute top-0 left-8 h-full w-48 ${isDark ? 'bg-gradient-to-r from-slate-900 to-transparent' : 'bg-gradient-to-r from-white to-transparent'} z-10`}></div>
+            <div className={`absolute top-0 right-8 h-full w-48 ${isDark ? 'bg-gradient-to-l from-slate-900 to-transparent' : 'bg-gradient-to-l from-white to-transparent'} z-10`}></div>
             
             <div className="overflow-hidden">
               <div className="flex gap-8 animate-scroll">
