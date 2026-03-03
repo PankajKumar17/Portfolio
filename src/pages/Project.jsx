@@ -40,18 +40,39 @@ const projectsData = {
     solution: "Implemented SM-2 inspired logic.",
     githubUrl: "https://github.com/PankajKumar17"
   },
-  sniffi: {
-    title: "Sniffi",
-    description: "A community hub for pet owners to share and discover.",
-    techStack: ["React", "Node", "MongoDB"],
-    images: [{ src: "/images/sniffi_image.png", alt: "Sniffi" }],
-    videos: [{ src: "/videos/sniffi-demo.mp4", poster: "/images/sniffi_image.png", caption: "Sniffi app walkthrough" }],
-    features: [
-      { title: "Profiles", description: "Rich pet profiles with activity logs." },
-      { title: "Discovery", description: "Browse nearby pet-friendly locations." }
+  upsy: {
+    title: "Upsy",
+    description: "Upsy is a smart course discovery and financing platform that helps students find the right institute, apply for education loans, and manage their learning journey — all in one place.",
+    techStack: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"],
+    images: [
+      { src: "/images/upsy_hero.jpg", alt: "Upsy Hero" },
+      { src: "/images/upsy_hero.jpg", alt: "Upsy Hero — Smartest way to choose your next course" },
+      { src: "/images/upsy_categories.jpg", alt: "Upsy Course Categories — Browse courses across coaching, certification and institutes" },
+      { src: "/images/upsy_courses.jpg", alt: "Upsy Explore — Trusted institutes and course listings" },
+      { src: "/images/upsy_cta.jpg", alt: "Upsy CTA — Take control of your learning today" }
     ],
-    challenges: "Real-time updates & geolocation performance.",
-    solution: "Optimized data fetching & memoization.",
+    videos: [{ src: "https://res.cloudinary.com/drdrcbfqj/video/upload/v1772533668/vw1gtp6pvny9uyidltoh.mp4", caption: "Upsy homepage walkthrough" }],
+    features: [
+      {
+        title: "Smart Course Discovery",
+        description: "Browse thousands of courses across categories like coaching, certification, and institutes. Filters by domain, budget, and duration make it easy to find exactly what fits your goals."
+      },
+      {
+        title: "Profile Mapping",
+        description: "Upsy maps your academic background and career goals to recommend the most relevant courses and institutes, reducing the noise of irrelevant options."
+      },
+      {
+        title: "Flexible Education Financing",
+        description: "Integrated with leading NBFCs like Avanse, Poonawalla, PropelLD, and Tata Capital to offer hassle-free education loans with competitive rates right from the platform."
+      },
+      {
+        title: "Partner Institutes",
+        description: "Upsy collaborates with trusted institutes and coaching centres across India that are committed to real career outcomes, not just certifications."
+      }
+    ],
+    challenges: "Integrating multiple loan provider APIs with varying schemas and ensuring real-time course availability.",
+    solution: "Built a unified financing adapter layer and used server-side rendering with Next.js for up-to-date course data on every load.",
+    projectUrl: "https://upsy.in",
     githubUrl: "https://github.com/PankajKumar17"
   },
   skipq: {
@@ -109,31 +130,31 @@ const Project = () => {
 
   return (
     <div className="relative w-full">
-      <div className={`${isDark ? 'bg-[#00000f] text-white' : 'bg-[#efeae3] text-gray-900'} py-20 px-8 min-h-[140vh] w-full flex flex-col justify-center items-center transition-filter transition-colors duration-300 ${openKey ? 'blur-sm' : ''}`}>      
-        <h2 className="text-6xl font-semibold">A small selection</h2>
-        <h2 className="text-6xl font-semibold">of my work</h2>
-        <div className="grid grid-cols-2 grid-rows-2 gap-8 p-6 mt-12">
-          <div className="card1 w-132 h-84 rounded-2xl relative group">
+      <div className={`${isDark ? 'bg-[#00000f] text-white' : 'bg-[#efeae3] text-gray-900'} py-20 px-6 md:px-8 min-h-screen w-full flex flex-col justify-center items-center transition-filter transition-colors duration-300 ${openKey ? 'blur-sm' : ''}`}>      
+        <h2 className="text-4xl md:text-6xl font-semibold text-center">A small selection</h2>
+        <h2 className="text-4xl md:text-6xl font-semibold text-center">of my work</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 p-4 md:p-6 mt-12 w-full max-w-5xl">
+          <div className="card1 w-full h-64 md:h-84 rounded-2xl relative group">
             <div className={`absolute rounded-2xl inset-0 ${isDark ? 'bg-gradient-to-r from-blue-400 to-indigo-800' : 'bg-gradient-to-r from-orange-400 to-red-500'} transition-opacity delay-400 duration-100 group-hover:opacity-0`}></div>
-            <div className="relative w-132 h-84 px-12 pt-12 z-10 hover:p-0 transition-all duration-400 delay-100 ease-in-out ">
+            <div className="relative w-full h-64 md:h-84 px-6 md:px-12 pt-6 md:pt-12 z-10 hover:p-0 transition-all duration-400 delay-100 ease-in-out ">
               <ProjectCard src="images/flash_cards.png" alt="Flash Cards Project" onOpen={() => setOpenKey('flashcards')} />
             </div>
           </div>
-          <div className="card1 w-132 h-84 rounded-2xl relative group">
-            <div className={`absolute rounded-2xl inset-0 ${isDark ? 'bg-gradient-to-r from-orange-600 to-yellow-400' : 'bg-gradient-to-r from-yellow-400 to-orange-500'} transition-opacity delay-400 duration-100 group-hover:opacity-0`}></div>
-            <div className="relative w-132 h-84 px-12 pt-12 z-10 hover:p-0 transition-all duration-400 delay-100 ease-in-out ">
-              <ProjectCard src="images/sniffi_image.png" alt="Sniffi Project" onOpen={() => setOpenKey('sniffi')} />
+          <div className="card1 w-full h-64 md:h-84 rounded-2xl relative group">
+            <div className={`absolute rounded-2xl inset-0 ${isDark ? 'bg-gradient-to-r from-blue-600 to-cyan-400' : 'bg-gradient-to-r from-blue-400 to-cyan-500'} transition-opacity delay-400 duration-100 group-hover:opacity-0`}></div>
+            <div className="relative w-full h-64 md:h-84 px-6 md:px-12 pt-6 md:pt-12 z-10 hover:p-0 transition-all duration-400 delay-100 ease-in-out ">
+              <ProjectCard src="images/upsy_hero.jpg" alt="Upsy Project" onOpen={() => setOpenKey('upsy')} />
             </div>
           </div>
-          <div className="card1 w-132 h-84 rounded-2xl relative group">
+          <div className="card1 w-full h-64 md:h-84 rounded-2xl relative group">
             <div className={`absolute rounded-2xl inset-0 ${isDark ? 'bg-gradient-to-r from-purple-600 to-indigo-600' : 'bg-gradient-to-r from-orange-500 to-pink-500'} transition-opacity delay-400 duration-100 group-hover:opacity-0`}></div>
-            <div className="relative w-132 h-84 px-12 pt-12 z-10 hover:p-0 transition-all duration-400 delay-100 ease-in-out ">
+            <div className="relative w-full h-64 md:h-84 px-6 md:px-12 pt-6 md:pt-12 z-10 hover:p-0 transition-all duration-400 delay-100 ease-in-out ">
               <ProjectCard src="images/skipq.png" alt="SkipQ Project" onOpen={() => setOpenKey('skipq')} />
             </div>
           </div>
-          <div className="card1 w-132 h-84 rounded-2xl relative group">
+          <div className="card1 w-full h-64 md:h-84 rounded-2xl relative group">
             <div className={`absolute rounded-2xl inset-0 ${isDark ? 'bg-gradient-to-r from-slate-900 to-slate-600' : 'bg-gradient-to-r from-orange-300 to-red-400'} transition-opacity delay-400 duration-100 group-hover:opacity-0`}></div>
-            <div className="relative w-132 h-84 px-12 pt-12 z-10 hover:p-0 transition-all duration-400 delay-100 ease-in-out ">
+            <div className="relative w-full h-64 md:h-84 px-6 md:px-12 pt-6 md:pt-12 z-10 hover:p-0 transition-all duration-400 delay-100 ease-in-out ">
               <ProjectCard src="images/hostel_suvidha.png" alt="Hostel Suvidha Project" onOpen={() => setOpenKey('hostel')} />
             </div>
           </div>

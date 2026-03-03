@@ -97,6 +97,14 @@ const ProjectTemplate = ({
                       <PlayIcon className={`w-6 h-6 ${isDark ? 'text-gray-300 group-hover:text-white' : 'text-orange-600 group-hover:text-orange-700'}`} />
                     )}
                   </button>
+                  <button
+                    onClick={() => videoRef.current && videoRef.current.requestFullscreen()}
+                    className={`absolute bottom-6 left-6 z-20 p-2 md:hidden ${isDark ? 'bg-[#1f2937] hover:bg-[#374151] ring-gray-700' : 'bg-orange-100 hover:bg-orange-200 ring-orange-300'} rounded-full transition-colors duration-200 ring-1`}
+                  >
+                    <svg className={`w-6 h-6 ${isDark ? 'text-gray-300' : 'text-orange-600'}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V6a2 2 0 012-2h2M4 16v2a2 2 0 002 2h2M16 4h2a2 2 0 012 2v2M16 20h2a2 2 0 002-2v-2" />
+                    </svg>
+                  </button>
                 </div>
               ) : (
                 images[1] && (
@@ -113,7 +121,7 @@ const ProjectTemplate = ({
           </div>
           <div className={`flex pt-20 ${isDark ? 'bg-[#00000f]' : 'bg-[#efeae3]'}`}>
             {images && images.length > 0 && (
-            <div className="w-full max-w-lg mx-auto mb-24">
+            <div className="hidden md:block w-full max-w-lg mx-auto mb-24">
               <div className="overflow-hidden">
                 <img
                   src={images[0].src}
@@ -126,31 +134,38 @@ const ProjectTemplate = ({
               </div>
             </div>
           )}
-            <div className="flex flex-col items-center pb-12 px-8 text-center max-w-4xl mx-auto">
-            <h1 className={`text-5xl md:text-7xl font-bold ${isDark ? 'text-white' : 'text-gray-900'} mb-6 tracking-tight`}>
+          <div className={`flex flex-col items-center pb-12 px-8 text-center max-w-4xl mx-auto`}>
+            <h1 className={`text-5xl md:text-7xl font-extrabold tracking-tight ${isDark ? 'text-white' : 'text-gray-900'} mb-4`}
+              style={{ fontFamily: 'Syne, sans-serif' }}>
               {title}
             </h1>
-            <p className={`text-xl md:text-2xl ${isDark ? 'text-gray-400' : 'text-gray-600'} mb-10 leading-relaxed max-w-2xl`}>
+            <p className={`text-lg md:text-xl ${isDark ? 'text-gray-400' : 'text-gray-600'} mb-6 leading-relaxed max-w-2xl`}
+              style={{ fontFamily: 'Inter, sans-serif' }}>
               {description}
             </p>
+
+            {/* Tech Stack Badges */}
+            <div className="flex flex-wrap justify-center gap-2 mb-8">
+              {techStack.map((tech, i) => (
+                <span key={i} className={`px-3 py-1 text-sm font-medium rounded-full border ${isDark ? 'border-purple-500/40 text-purple-300 bg-purple-500/10' : 'border-orange-400/40 text-orange-600 bg-orange-50'}`}
+                  style={{ fontFamily: 'Inter, sans-serif' }}>
+                  {tech}
+                </span>
+              ))}
+            </div>
+
             {projectUrl && (
-              <a
-                href={projectUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`px-8 py-4 ${isDark ? 'bg-purple-600 hover:bg-purple-700 hover:shadow-purple-500/30' : 'bg-orange-500 hover:bg-orange-600 hover:shadow-orange-500/30'} text-white font-semibold rounded-full transition-all duration-300 shadow-lg transform hover:-translate-y-1`}
-              >
-                Open live site
+              <a href={projectUrl} target="_blank" rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 px-8 py-3 ${isDark ? 'bg-purple-600 hover:bg-purple-700 shadow-purple-500/30' : 'bg-orange-500 hover:bg-orange-600 shadow-orange-500/30'} text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:-translate-y-0.5 mb-3`}>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                Live Site
               </a>
             )}
-            {githubUrl && (
-              <a
-                href={githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`inline-block px-8 py-2 ${isDark ? 'bg-purple-600 hover:bg-purple-700 hover:shadow-purple-500/30' : 'bg-orange-500 hover:bg-orange-600 hover:shadow-orange-500/30'} text-white font-semibold rounded-lg transition-all duration-300 shadow-lg mb-4`}
-              >
-                Open Github
+            {githubUrl && !projectUrl && (
+              <a href={githubUrl} target="_blank" rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 px-8 py-3 border-2 ${isDark ? 'border-gray-600 text-gray-300 hover:border-purple-500 hover:text-purple-300' : 'border-gray-300 text-gray-700 hover:border-orange-500 hover:text-orange-600'} font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5`}>
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z"/></svg>
+                View on GitHub
               </a>
             )}
           </div>
@@ -158,9 +173,13 @@ const ProjectTemplate = ({
           </div>
           <div className={`${isDark ? 'bg-[#00000f]' : 'bg-[#efeae3]'} py-24 overflow-hidden transition-colors duration-300`}>
             <div className="max-w-5xl mx-auto">
-              <h2 className={`text-4xl md:text-5xl font-bold text-center ${isDark ? 'text-white' : 'text-gray-900'} mb-20`}>
+              <h2 className={`text-4xl md:text-5xl font-extrabold text-center ${isDark ? 'text-white' : 'text-gray-900'} mb-4`}
+                style={{ fontFamily: 'Syne, sans-serif' }}>
                 Some of my favorite details
               </h2>
+              <p className={`text-center text-base mb-20 ${isDark ? 'text-gray-500' : 'text-gray-500'}`} style={{ fontFamily: 'Inter, sans-serif' }}>
+                Key features that make this project stand out
+              </p>
               <div className="space-y-32">
                 {features.map((feature, index) => (
                   <div
@@ -170,10 +189,12 @@ const ProjectTemplate = ({
                     } gap-12 md:gap-24 items-center`}
                   >
                     <div className="flex-1 mx-8 md:mx-16">
-                      <h3 className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'} mb-4`}>
+                      <h3 className={`text-2xl md:text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'} mb-3`}
+                        style={{ fontFamily: 'Syne, sans-serif' }}>
                         {feature.title}
                       </h3>
-                      <p className={`text-lg ${isDark ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
+                      <p className={`text-base md:text-lg ${isDark ? 'text-gray-400' : 'text-gray-600'} leading-relaxed`}
+                        style={{ fontFamily: 'Inter, sans-serif' }}>
                         {feature.description}
                       </p>
                     </div>

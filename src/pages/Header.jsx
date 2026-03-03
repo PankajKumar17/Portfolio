@@ -44,7 +44,7 @@ const Header = () => {
   }, [displayedText, isDeleting, currentRole, roles]);
 
   return (
-    <header className={`${isDark ? 'bg-[#00000f] text-white' : 'bg-[#efeae3] text-gray-900'} h-[100vh] relative overflow-hidden flex transition-colors duration-300`}>
+    <header className={`${isDark ? 'bg-[#00000f] text-white' : 'bg-[#efeae3] text-gray-900'} min-h-[100vh] relative overflow-hidden flex flex-col md:flex-row transition-colors duration-300`}>
       <Navbar />
 
       {/* Background Bubble */}
@@ -87,15 +87,15 @@ const Header = () => {
       </div>
 
       {/* Left Section */}
-      <div className="left z-10 w-1/2 flex flex-col items-center justify-center text-center px-38">
+      <div className="left z-10 w-full md:w-1/2 flex flex-col items-center justify-center text-center px-8 md:px-16 lg:px-24 pt-28 md:pt-0 pb-8 md:pb-0">
         <div className="flex flex-col items-start justify-center h-full text-start">
-          <h2 className="text-4xl font-bold mb-4 self-start text-start">
+          <h2 className="text-2xl md:text-4xl font-bold mb-4 self-start text-start">
             Hello, I'm
           </h2>
-          <h1 className="text-6xl font-bold mb-4 self-start text-start">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 self-start text-start">
             Pankaj Kumar
           </h1>
-          <h2 className="text-2xl font-semibold mb-6 self-start text-start">
+          <h2 className="text-xl md:text-2xl font-semibold mb-6 self-start text-start">
             I am a{" "}
             <span className={`${isDark ? 'text-[#8a47c5]' : 'text-[#fe330a]'} ml-1.5`}>
               {displayedText}
@@ -113,7 +113,7 @@ const Header = () => {
       </div>
 
       {/* Right Section */}
-      <div className="right z-50 absolute w-[150vw] -right-1/2 flex justify-between overflow-visible">
+      <div className="right z-50 hidden md:block absolute w-[150vw] -right-1/2 flex justify-between overflow-visible">
         <Lanyard className="z-59 overflow-visible" position={[0, 0, 15]} gravity={[0, -40, 0]} />
       </div>
     </header>

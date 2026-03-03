@@ -16,11 +16,11 @@ const About = () => {
 
   return (
     <section className={`relative min-h-screen ${isDark ? 'bg-[#00000f] text-white' : 'bg-[#efeae3] text-gray-900'} flex items-center justify-center px-4 transition-colors duration-300`}>
-      {/* Floating Images */}
+      {/* Floating Images - hidden on small screens */}
        <img
         src="images/terrier.jpeg"
         alt="floating1"
-        className="absolute h-32 top-10 left-[20vw] rounded-xl shadow-xl rotate-[-12deg] animate-floating1 cursor-pointer hover:scale-105 transition-transform"
+        className="hidden md:block absolute h-32 top-10 left-[20vw] rounded-xl shadow-xl rotate-[-12deg] animate-floating1 cursor-pointer hover:scale-105 transition-transform"
         loading="lazy"
         decoding="async"
         onClick={() => openImage("images/terrier.jpeg")}
@@ -28,7 +28,7 @@ const About = () => {
       <img
         src="images/pic1.jpeg"
         alt="floating2"
-        className="absolute bottom-[12vh] left-[20vw] w-48 rounded-xl shadow-xl -rotate-[-6deg] animate-floating2 cursor-pointer hover:scale-105 transition-transform"
+        className="hidden md:block absolute bottom-[12vh] left-[20vw] w-48 rounded-xl shadow-xl -rotate-[-6deg] animate-floating2 cursor-pointer hover:scale-105 transition-transform"
         loading="lazy"
         decoding="async"
         onClick={() => openImage("images/pic1.jpeg")}
@@ -36,14 +36,14 @@ const About = () => {
       <img
         src="images/pic3.jpg"
         alt="floating3"
-        className="absolute top-36 right-[12vw] w-32 rounded-xl shadow-xl rotate-[5deg] animate-floating3 cursor-pointer hover:scale-105 transition-transform"
+        className="hidden md:block absolute top-36 right-[12vw] w-32 rounded-xl shadow-xl rotate-[5deg] animate-floating3 cursor-pointer hover:scale-105 transition-transform"
         loading="lazy"
         decoding="async"
         onClick={() => openImage("images/pic3.jpg")}
       />
 
       <div className="max-w-3xl text-center">
-        <h2 className={`text-5xl font-extrabold ${isDark ? 'text-white' : 'text-gray-900'} mb-12 tracking-wide`}>WHO AM I ?</h2>
+        <h2 className={`text-3xl md:text-5xl font-extrabold ${isDark ? 'text-white' : 'text-gray-900'} mb-12 tracking-wide`}>WHO AM I ?</h2>
         <p className="text-lg mb-4">
           I'm a passionate full-stack web developer using
  React, the MERN stack, and Next.js, with a strong programming foundation in C++, Python, and Flutter.

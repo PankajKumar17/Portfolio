@@ -14,8 +14,8 @@ const Skills = () => {
           MY SKILLS
         </h1>
 
-        <div className="flex items-center justify-center gap-12">
-          <div className="grid grid-cols-4 gap-6">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
             <SkillCard src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg" label="Flutter"/>
             <SkillCard src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" label="React"/>
             <SkillCard src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" label="Tailwind CSS"/>

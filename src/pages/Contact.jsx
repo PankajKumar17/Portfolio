@@ -67,14 +67,14 @@ const Contact = () => {
   };
 
   return (
-    <section className={`${isDark ? 'bg-[#00000f] text-white' : 'bg-[#efeae3] text-gray-900'} pt-8 pb-6 px-28 transition-colors duration-300`}>
+    <section className={`${isDark ? 'bg-[#00000f] text-white' : 'bg-[#efeae3] text-gray-900'} pt-8 pb-6 px-6 md:px-16 lg:px-28 transition-colors duration-300`}>
       <div className="max-w-[100vw] mx-auto">
         <h2 className="text-5xl font-bold text-center mb-12">
           Get in Touch - Let's Connect
         </h2>
 
-        <div className="flex items-center justify-between gap-6 mx-26">
-          <div className="flex-1 w-[40vw]">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 mx-0 lg:mx-26">
+          <div className="flex-1 w-full lg:w-[40vw]">
             <div className="space-y-6">
               <div>
                 <label className={`block ${isDark ? 'text-gray-300' : 'text-gray-600'} text-sm mb-2`}>
@@ -180,7 +180,7 @@ const Contact = () => {
               </button>
             </div>
           </div>
-          <div className="right w-[30vw] h-[60vh] flex items-center justify-center ml-[10vw]">
+          <div className="right w-full lg:w-[30vw] h-[50vh] flex items-center justify-center mt-6 lg:mt-0 lg:ml-[10vw]">
             <iframe
               src={isDark ? 'https://lottie.host/embed/ca27e9a3-64b7-4f24-80b4-e2128c6395f6/N6QEd1t2GS.lottie':'https://lottie.host/embed/c12ce218-dd38-4a28-8656-96febf2bfb00/Xgw2FG0dPN.lottie'}
               width="100%"
@@ -195,9 +195,9 @@ const Contact = () => {
         </div>
         <div className="mt-8 text-center">
           <div className={`line ${isDark ? 'bg-slate-400' : 'bg-orange-300'} w-full h-[2px] rounded-2xl my-4 transition-colors duration-300`}></div>
-          <divp className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm flex items-center justify-between`}>
-            <p>📞 +91 7027009709</p>
-            <div className="icons h-[24px] p-0 m-0 flex gap-4 items-center justify-center">
+          <div className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm flex flex-wrap items-center justify-between gap-4`}>
+            <p className="whitespace-nowrap">📞 +91 7027009709</p>
+            <div className="icons flex gap-4 items-center justify-center">
               <a
                 href="https://www.linkedin.com/in/pankaj261/"
                 target="_blank"
@@ -253,8 +253,8 @@ const Contact = () => {
                 </svg>
               </a>
             </div>
-            <p>📧 pankajkumar230261@gmail.com</p>
-          </divp>
+            <p className="whitespace-nowrap">📧 pankajkumar230261@gmail.com</p>
+          </div>
         </div>
       </div>
       <ToastContainer
