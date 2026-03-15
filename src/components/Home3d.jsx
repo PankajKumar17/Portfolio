@@ -21,10 +21,13 @@ export default function Element() {
   }, []);
 
   return (
-    <div ref={containerRef} className="w-screen h-screen relative mt-12">
-      <div className="absolute bottom-2 right-2 box h-12 w-40 bg-[#00000f]"></div>
+    <div
+      ref={containerRef}
+      className="relative w-full h-[42vh] min-h-[280px] md:h-[70vh] lg:h-screen mt-4 md:mt-12"
+    >
+      <div className="absolute bottom-2 right-2 box h-12 w-40 bg-[#00000f] hidden sm:block"></div>
       {isVisible && (
-        <Spline scene="https://prod.spline.design/AxIUzoqZdrEZmoRw/scene.splinecode" />
+        <Spline scene="https://prod.spline.design/hnJmx-YYvgB0KIvD/scene.splinecode" />
       )}
     </div>
   );
